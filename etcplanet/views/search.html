@@ -1,0 +1,19 @@
+{% extends "html_base" %}
+{% block body_elements %}
+
+<div id = "search">
+        {% if result.type   == "account" %}
+                <p>Account</p>
+                {% include "account_table" %}
+        {% elif result.type == "transaction" %}
+                <p>Transaction</p>
+                {% include "trans_table" %}
+        {% elif result.type == "block" %}
+                <p>Block</p>
+                {% include "block_table" %}
+        {% else %}
+                <p class = "error">There was an error.</p>
+        {% endif %}
+</div>
+
+{% endblock %}

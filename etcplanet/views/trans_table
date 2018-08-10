@@ -1,0 +1,39 @@
+<table>
+        <tr class = "grey"><th class = "field">Field</th><th>Value</th></tr>
+        {{b|safe}}Hash{{m|safe}}{{result.hash}}{{e|safe}}
+        {{g|safe}}Creation Date &amp; Time:{{m|safe}}{{result.timestamp}}
+                                                                      {{e|safe}}
+        {{b|safe}}Block Number{{m|safe}}
+                <a href = "/search/?search={{result.blockNumber}}">
+                        {{result.blockNumber}}
+                </a>{{e|safe}}
+        {{g|safe}}Block Index{{m|safe}}{{result.transactionIndex}}{{e|safe}}
+        {{b|safe}}Sending Account{{m|safe}}
+                <a href = "/search/?search={{result.from}}">
+                        {{result.from}}
+                </a>{{e|safe}}
+        {{g|safe}}Sending Account{{m|safe}}
+                <a href = "/search/?search={{result.to}}">
+                        {{result.from}}
+                </a>{{e|safe}}
+        {{b|safe}}Funds Sent{{m|safe}}{{result.value}} aETC (wei){{e|safe}}
+        {{g|safe}}Data Sent{{m|safe}}
+                {% if result.input == "0x" %}
+                        (None)
+                {% else %}
+                        {{result.input}}
+                {% endif %}{{e|safe}}
+        {{b|safe}}Gas Requirement{{m|safe}}{{result.gasUsed}} gas{{e|safe}}
+        {{g|safe}}Gas Requirement Maximum{{m|safe}}{{result.gas}} gas{{e|safe}}
+        {{b|safe}}Gas Unit Price{{m|safe}}
+                                        {{result.gasPrice}} aETC (wei){{e|safe}}
+        {{g|safe}}Account Nonce{{m|safe}}{{result.nonce}}{{e|safe}}
+        {{b|safe}}Sending Account Public Key{{m|safe}}
+                                                  {{result.publicKey}}{{e|safe}}
+        {{g|safe}}Sending Account Signature{{m|safe}}
+                <table>
+                        <tr><td>v:</td><td>{{result.v}}</td></tr>
+                        <tr><td>r:</td><td>{{result.r}}</td></tr>
+                        <tr><td>s:</td><td>{{result.s}}</td></tr>
+                </table>{{e|safe}}
+</table>

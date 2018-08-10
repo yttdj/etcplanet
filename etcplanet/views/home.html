@@ -1,0 +1,12 @@
+{% extends "html_base" %}
+{% block body_elements %}
+
+<div id = "home">
+        <form action = "/search" method = "get">
+                <img src = "/static/etc_logo.png"/>
+                <input id = "search_box" type = "text"   name  = "search"/>
+                <input id = "search_btn" type = "submit" value = "Search ETC"/>
+        </form>
+</div>
+
+{% endblock %}

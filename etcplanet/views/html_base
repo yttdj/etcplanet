@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+        <title>ETCPlanet</title>
+        <link type = "text/css" href = "/static/base.css" rel = "stylesheet">
+        <meta content = "text/html; charset=utf-8" http-equiv = "content-type">
+</head>
+<body>
+
+{% block body_elements %}{% endblock %}
+
+</body>
+</html>

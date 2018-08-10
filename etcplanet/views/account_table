@@ -1,0 +1,34 @@
+<table>
+        <tr class = "grey"><th class = "field">Field</th><th>Value</th></tr>
+        {{b|safe}}Address{{m|safe}}{{result.address}}{{e|safe}}
+        {{g|safe}}Balance{{m|safe}}{{result.eth_getBalance}} aETC (wei)
+                                                                      {{e|safe}}
+        {{b|safe}}Type{{m|safe}}
+                {% if result.storage %}
+                        smart contract
+                {% else %}
+                        external
+                {% endif %}{{e|safe}}
+        {{g|safe}}Nonce{{m|safe}}{{result.nonce}}{{e|safe}}
+        {% if result.storage %}
+                {{b|safe}}Smart Contract Code{{m|safe}}{{result.eth_getCode}}
+                                                                      {{e|safe}}
+                {{g|safe}}Smart Contract Storage{{m|safe}}
+                        <table>
+                                {% for e in result.storage %}
+                                        <tr>
+                                                <td>{{e.0}}:</td>
+                                                <td>{{e.1}}</td>
+                                        </tr>
+                                {% endfor %}
+                        </table>
+                        {% if result.prev >= 0 %}
+                                <a href = "{{result.url}}&beg={{result.prev}}">
+                                       previous
+                                </a>
+                        {% endif %}
+                        <a href = "{{result.url}}&beg={{result.next}}">
+                               next
+                        </a>{{e|safe}}
+        {% endif %}
+</table>

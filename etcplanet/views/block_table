@@ -1,0 +1,72 @@
+<table>
+        <tr class = "grey"><th class = "field">Field</th><th>Value</th></tr>
+        {{b|safe}}Number{{m|safe}}{{result.number}}{{e|safe}}
+        {{g|safe}}Creation Date &amp; Time{{m|safe}}{{result.timestamp}} UTC
+                                                                      {{e|safe}}
+        {{b|safe}}Size{{m|safe}}{{result.size}} bytes{{e|safe}}
+        {{g|safe}}Header Hash{{m|safe}}{{result.hash}}{{e|safe}}
+        {{b|safe}}Parent Header Hash{{m|safe}}
+                <a href = "/search/?search={{result.parentHash}}">
+                        {{result.parentHash}}
+                </a>{{e|safe}}
+        {{g|safe}}Transaction List Root Hash{{m|safe}}
+                                           {{result.transactionsRoot}}{{e|safe}}
+        {{b|safe}}Transaction Receipt List Root Hash{{m|safe}}
+                                               {{result.receiptsRoot}}{{e|safe}}
+        {{g|safe}}Gas Requirement{{m|safe}}{{result.gasUsed}}{{e|safe}}
+        {{b|safe}}Gas Requirement Maximum{{m|safe}}{{result.gasLimit}}{{e|safe}}
+        {{g|safe}}Final State Root Hash{{m|safe}}{{result.stateRoot}}{{e|safe}}
+        {{b|safe}}Mining Address{{m|safe}}
+                <a href = "/search/?search={{result.miner}}">
+                        {{result.miner}}
+                </a>{{e|safe}}
+        {{g|safe}}Mining Difficulty{{m|safe}}{{result.difficulty}}{{e|safe}}
+        {{b|safe}}Mining Reward{{m|safe}}{{result.reward}}{{e|safe}}
+        {{g|safe}}Mining Uncle List Hash{{m|safe}}{{result.sha3Uncles}}
+                                                                      {{e|safe}}
+        {{b|safe}}Extra Data{{m|safe}}{{result.extraData}}{{e|safe}}
+        {{g|safe}}Nonce{{m|safe}}{{result.nonce}}{{e|safe}}
+        {{b|safe}}Gas Requirement{{m|safe}}{{result.gasUsed}}{{e|safe}}
+        {{g|safe}}Uncles{{m|safe}}
+                {% if result.uncles %}
+                        <table>
+                                {% for e in result.uncles %}
+                                        <tr>
+                                                <td>{{forloop.counter0}}:</td>
+                                                <td>{{e}}</td>
+                                        </tr>
+                                {% endfor %}
+                        </table>
+                {% else %}
+                        (None)
+                {% endif %}{{e|safe}}
+        {{b|safe}}Transaction Logs Bloom Filter{{m|safe}}{{result.logsBloom}}
+                                                                      {{e|safe}}
+        {{g|safe}}Transactions{{m|safe}}
+                {% if result.transactions %}
+                        <table>
+                                {% for e in result.transactions %}
+                                        <tr>
+                                                <td>{{e.0}}:</td>
+                                                <td>
+                                                        <a href = "{{e.2}}">
+                                                                {{e.1}}
+                                                        </a>
+                                                </td>
+                                        </tr>
+                                {% endfor %}
+                        </table>
+                        {% if result.prev >= 0 %}
+                                <a href = "{{result.url}}&beg={{result.prev}}">
+                                        previous
+                                </a>
+                        {% endif %}
+                        {% if result.transactions|length >= result.next %}
+                                <a href = "{{result.url}}&beg={{result.next}}">
+                                        next
+                                </a>
+                        {% endif %}
+                {% else %}
+                        (None)
+                {% endif %}{{e|safe}}
+</table>
